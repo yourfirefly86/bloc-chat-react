@@ -20,7 +20,7 @@ class RoomList extends Component {
 
   render() {
     const roomList = this.state.rooms.map((room) =>
-      <li key= {room.key}>{room.name}</li>
+      <li key = {room.key}>{room.name}</li>
     );
 
     return(

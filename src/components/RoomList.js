@@ -44,10 +44,10 @@ class RoomList extends Component {
     )
 
     return(
-      <div>
-      <div>{createRoomForm}</div>
-      <ul>{roomList}</ul>
-      </div>
+      <body>
+      <h1>{createRoomForm}</h1>
+      <p>{roomList}</p>
+      </body>
     );
     }
   }

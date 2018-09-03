@@ -33,23 +33,23 @@ class RoomList extends Component {
   }
 
   render() {
-    const roomList = this.state.rooms.map((room) =>
-      <li key = {room.key}>{room.name}</li>
-    );
-    const createRoomForm = (
-      <form onSubmit={this.createRoom}>
-        <input type="text" value={this.state.newRoomName} placeholder="Enter Room Name" onChange={this.handleRoomChange} />
-        <input type="submit" value="Create New Chat Room"/>
-      </form>
-    )
+     const roomList = this.state.rooms.map((room) =>
+       <li key = {room.key}>{room.name}</li>
+     );
+     const createRoomForm = (
+       <form onSubmit={this.createRoom}>
+         <input type="text" value={this.state.newRoomName} placeholder="Enter Room Name" onChange={this.handleRoomChange} />
+         <input type="submit" value="Create New Chat Room"/>
+       </form>
+     )
 
-    return(
-      <body>
-      <h1>{createRoomForm}</h1>
-      <p>{roomList}</p>
-      </body>
-    );
-    }
-  }
+     return(
+       <div>
+       <div>{createRoomForm}</div>
+       <ul>{roomList}</ul>
+       </div>
+     );
+     }
+   }
 
 export default RoomList;

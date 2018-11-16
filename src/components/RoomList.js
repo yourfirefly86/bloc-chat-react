@@ -34,7 +34,7 @@ class RoomList extends Component {
 
   render() {
      const roomList = this.state.rooms.map((room) =>
-       <li key = {room.key} onClick={this.props.changeActiveRoom}>{room.name}</li>
+       <li key = {room.key} onClick={() => this.props.changeActiveRoom(room)}>{room.name}</li>
      );
      const createRoomForm = (
        <form onSubmit={this.createRoom}>

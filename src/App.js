@@ -6,17 +6,30 @@ import MessageList from './components/MessageList.js';
 import * as firebase from 'firebase';
 
 // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCOC_Y3gPUjCpFxbLOM2kFFVKsZz5vHyA8",
-    authDomain: "bloc-chat-react-9aeee.firebaseapp.com",
-    databaseURL: "https://bloc-chat-react-9aeee.firebaseio.com",
-    projectId: "bloc-chat-react-9aeee",
-    storageBucket: "bloc-chat-react-9aeee.appspot.com",
-    messagingSenderId: "569353514187"
-  };
-  firebase.initializeApp(config);
+var config = {
+  apiKey: "AIzaSyCOC_Y3gPUjCpFxbLOM2kFFVKsZz5vHyA8",
+  authDomain: "bloc-chat-react-9aeee.firebaseapp.com",
+  databaseURL: "https://bloc-chat-react-9aeee.firebaseio.com",
+  projectId: "bloc-chat-react-9aeee",
+  storageBucket: "bloc-chat-react-9aeee.appspot.com",
+  messagingSenderId: "569353514187"
+};
+
+firebase.initializeApp(config);
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.changeActiveRoom = this.changeActiveRoom.bind(this);
+    this.state = {
+        activeRoom: ""
+    };
+  }
+
+  changeActiveRoom(roomId) {
+    this.setState({activeRoom: roomId});
+  }
+
   render() {
     return (
       <div className="App">
@@ -25,12 +38,14 @@ class App extends Component {
           <h1 className="App-title">Welcome to Bloc Chat</h1>
         </header>
         <div className="App-intro">
-          <RoomList firebase={firebase}/>
-          <MessageList firebase={firebase}/>
+          {this.state.activeRoom.name}
+          <RoomList firebase={firebase} changeActiveRoom={this.changeActiveRoom}/>
+          <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
         </div>
       </div>
     );
   }
 }
+
 
 export default App;

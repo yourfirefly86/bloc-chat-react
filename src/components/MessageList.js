@@ -39,11 +39,13 @@ class MessageList extends Component{
     console.log(this.props.activeRoom)
     this.messagesRef.push({
       content: this.state.content,
+      username: this.props.user ? this.props.user.displayName: "",
       sentAt: this.state.sentAt,
       roomId: this.props.activeRoom.key
     });
     this.setState({
       content: "",
+      username: "",
       sentAt: "",
       roomId: ""
     });
